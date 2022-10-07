@@ -3,10 +3,16 @@ require('dotenv').config();
 const router = express.Router();
 const cors = require("cors");
 const nodemailer = require("nodemailer");
-const {EMAIL_USER, EMAIL_PASS} = process.env;
+const {EMAIL_USER, EMAIL_PASS,CORS_URL} = process.env;
 // server used to send emails
 const app = express();
-app.use(cors());
+
+const corsOptions = {
+	origin: CORS_URL,
+	optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/", router);
 app.listen(5000, () => console.log("Server Running on 5000"));
