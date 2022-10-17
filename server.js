@@ -45,17 +45,16 @@ router.post("/contact", (req, res) => {
   const name = req.body.firstName + req.body.lastName;
   const email = req.body.email;
   const message = req.body.message;
-  const phone = req.body.phone;
+//  const phone = req.body.phone;
   const mail = {
     from: name,
     to: "laureanoiglesias34@gmail.com",
     subject: "Contact Form Submission - Portfolio",
     html: `<p>Name: ${name}</p>
            <p>Email: ${email}</p>
-           <p>Phone: ${phone}</p>
            <p>Message: ${message}</p>`,
   };
-  if(!req.body.firstName || !req.body.lastName || !req.body.email || !req.body.message || !req.body.phone){
+  if(!req.body.firstName || !req.body.lastName || !req.body.email || !req.body.message){
     console.log("Missing Data")
     res.json({ code: 500, status: "Missing data" })
   }else{
